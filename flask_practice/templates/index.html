@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<style>
+    .rounded-button {
+      border-radius: 10px;
+    }
+
+    .large-button {
+        width: 200px;
+        height: 50px;
+      }
+</style>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아싸 연결 성공</title>
+</head>
+
+<body>
+
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+    <h1>감사합니다</h1>
+    <img src="{{ url_for('static', filename='jerry.gif') }}" alt="이미지 파일을 불러오는 데 실패했습니다">
+    <button class="rounded-button, large-button" onclick="location.href='/redirect-home'">See my connection</button>
+    
+</div>
+</body>
+
+</html>
