@@ -1,25 +1,23 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <cctype>
 
 using namespace std;
 
-string solution(const string str1 = "", const string str2 = ""){
+string solution(vector<string> arr){
     string answer = "";
-    string temp1 = {};
-    int str1_len = str1.length();
-    int str2_len = str2.length();
-    int len = str1_len + str2_len;
 
-    for(int i = 0; i < len; i++){
-        if(i < str1_len){
-            temp1.push_back(str1[i]);
-        }
-        if(i < str2_len){
-            temp1.push_back(str2[i]);
-        }
-    }
+    if(arr.size() < 1 || arr.size() > 200){
+        cout << "array length is too long or too short\n";
+    }    
 
-    for(const char temp2 : temp1){
-        answer.push_back(temp2);
+    for(const string temp : arr){
+        string temp1 = "";
+        for (const char temp2 : temp){
+            temp1.push_back(char(tolower(temp2)));
+        }
+        answer = answer + temp1;
     }
 
     return answer;
@@ -29,7 +27,7 @@ string solution(const string str1 = "", const string str2 = ""){
 
 int main(){
     string answer = "";
-    answer = solution("aaaaaaa", "bbbbb");
+    answer = solution({"hello","world","by c++"});
     cout << answer;
     return 0;
 }
