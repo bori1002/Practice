@@ -34,9 +34,17 @@ int case5(int a, int b, int c, int d){
 int solution(int a, int b, int c, int d){
     int answer = 0;
     int checkpoint = 0;
+    vector<vector<int>> same = {};
+    vector<vector<int>> different = {};
     vector<vector<int>> numlist = {{a, b}, {a, c}, {a, d}, {b, c}, {b, d}, {c, d}};
     for(vector<int> num : numlist){
-        if(num[0] == num[1])
+        if(num[0] == num[1]){
+            checkpoint += 1;
+            same.push_back({num[0], num[1]});
+        }
+        else if(num[0] != num[1]){
+            different.push_back({num[0], num[1]});
+        }
     }
 
     return answer;
