@@ -46,6 +46,13 @@ int solution(int a, int b, int c, int d){
             different.push_back({num[0], num[1]});
         }
     }
+    if(checkpoint == 6){
+        answer = case1(same[0][0]);
+    }
+    else if(checkpoint == 3){
+        int diff_num = (same[0][0] == different[0][0]) ? different[0][1] : different[0][0];
+        answer = case2(same[0][0], diff_num);
+    }
 
     return answer;
 }
