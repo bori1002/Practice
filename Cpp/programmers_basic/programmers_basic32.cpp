@@ -53,6 +53,9 @@ int solution(int a, int b, int c, int d){
         int diff_num = (same[0][0] == different[0][0]) ? different[0][1] : different[0][0];
         answer = case2(same[0][0], diff_num);
     }
+    else if(checkpoint == 2){
+        int diff_num = 0;
+    }
 
     return answer;
 }
