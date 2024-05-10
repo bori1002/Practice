@@ -1,3 +1,4 @@
+//Day 8 주사위 게임 3
 #include <iostream>
 #include <vector>
 
@@ -13,7 +14,7 @@ int case3(int p, int q){
     if(p > q){
         return (p + q) * (p - q);
     }
-    else if( p < q){
+    else if(p < q){
         return (p + q) * (q - p);
     }
 }
@@ -31,37 +32,36 @@ int case5(int a, int b, int c, int d){
     return minValue;
 }
 
-int solution(int a, int b, int c, int d){
-    int answer = 0;
-    int checkpoint = 0;
-    vector<vector<int>> same = {};
-    vector<vector<int>> different = {};
-    vector<vector<int>> numlist = {{a, b}, {a, c}, {a, d}, {b, c}, {b, d}, {c, d}};
-    for(vector<int> num : numlist){
-        if(num[0] == num[1]){
-            checkpoint += 1;
-            same.push_back({num[0], num[1]});
-        }
-        else if(num[0] != num[1]){
-            different.push_back({num[0], num[1]});
-        }
+int solution(int a, int b, int c, int d) {
+    if(a == b && b == c && c == d){
+        return case1(a);
     }
-    if(checkpoint == 6){
-        answer = case1(same[0][0]);
+    else if((a == b && b == c) || (a == b && a == d) || (b == c && c == d) || (a == c && c == d)){
+        if((a == b) && (b == c)) return case2(a,d);
+        else if((a == b) && (a == d)) return case2(a,c);
+        else if((b == c) && (c == d))return case2(b,a);
+        else if((a == c) && (c == d))return case2(a,b);
     }
-    else if(checkpoint == 3){
-        int diff_num = (same[0][0] == different[0][0]) ? different[0][1] : different[0][0];
-        answer = case2(same[0][0], diff_num);
+    else if((a == b && c == d) || (a == c && b == d) || (a == d && b == c)){
+        if(a == b && c == d) return case3(a, c);
+        else if(a == c && b == d) return case3(a, b);
+        else if(a == d && b == c) return case3(a, b);
     }
-    else if(checkpoint == 2){
-        int diff_num = 0;
+    else if(a == b || a == c || a == d || b == c || b == d || c == d){
+        if(a == b) return case4(c, d);
+        else if(a == c) return case4(b, d);
+        else if(a == d) return case4(b, c);
+        else if(b == c) return case4(a, d);
+        else if(b == d) return case4(a, c);
+        else if(c == d) return case4(a, b);
     }
-
-    return answer;
+    else{
+        return case5(a, b, c, d);
+    }
 }
 
 int main(){
-    int answer = solution(true, false, false, false);
+    int answer = solution(4, 1, 4, 4);
     cout << answer;
     return 0;
 }
