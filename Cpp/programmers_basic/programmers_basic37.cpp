@@ -22,7 +22,7 @@ vector<int> solution(vector<string> intStrs, int k, int s, int l) {
 int main(){
     vector<int> answer = solution({"0123456789","9876543210","9999999999999"}, 50000, 5, 5);
     for(const int result : answer){
-        cout << result;
+        cout << result << endl;
     }
     return 0;
 }
