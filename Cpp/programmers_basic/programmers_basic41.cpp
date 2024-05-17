@@ -1,8 +1,7 @@
-//day10 접미사인지 확인하기
+//day9 접미사인지 확인하기
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
