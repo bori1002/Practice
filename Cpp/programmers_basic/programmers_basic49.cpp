@@ -1,4 +1,4 @@
-//day11 문자 개수 세기
+//day11 글자지우기
 #include <iostream>
 #include <string>
 #include <vector>
@@ -6,19 +6,22 @@
 
 using namespace std;
 
-vector<int> solution(int n, int k) {
-    vector<int> answer;
-    for(int i = 1; i <= n; i++){
-        if(i % k == 0){answer.push_back(i);}
+string solution(string my_string, vector<int> indices) {
+    string answer = my_string;
+    sort(indices.begin(), indices.end());
+    auto it = answer.begin();
+    int count = 0; //count loop
+    for(const int index : indices ){
+        answer.erase(it + index - count);
+        count++;
+        // cout << answer << endl;
     }
-    sort(answer.begin(), answer.end());
     return answer;
 }
 
 int main(){
-    for(const int num : solution(10,3)){
-        cout << num << ",";
-    }
+    string answer = solution("apporoograpemmemprs",{1, 16, 6, 15, 0, 10, 11, 3});
+    cout << answer;
     return 0;
 }
 
