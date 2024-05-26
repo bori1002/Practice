@@ -1,4 +1,4 @@
-//day13 n번째 원소부터
+//day13 n개 간격의 원소들
 #include <iostream>
 #include <vector>
 
@@ -6,16 +6,17 @@ using namespace std;
 
 vector<int> solution(vector<int> num_list, int n) {
     vector<int> answer;
-    for(int i = n-1; i < num_list.size(); i++){
+    int i = 0;
+    for(i = 0; i < num_list.size(); i+n){
         answer.push_back(num_list[i]);
     }
     return answer;
 }
 
 int main(){
-    vector<int> answer = solution({2, 1, 6}, 3);
+    vector<int> answer = solution({4, 2, 6, 1, 7, 6}, 2);
     for(const int num : answer){
-        cout << num << endl;
+        cout << num << ",";
     }
     return 0;
 }
