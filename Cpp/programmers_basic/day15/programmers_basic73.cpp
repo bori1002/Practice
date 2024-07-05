@@ -23,7 +23,6 @@ int solution(vector<int> arr) {
                 temp.push_back((num - 1)/2);
                 answer++;
             }
-            cout << check << endl;
         }
         arr = temp;
     }
