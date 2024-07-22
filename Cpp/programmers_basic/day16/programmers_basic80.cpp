@@ -1,15 +1,17 @@
-//day16 A강조하기
+//day16 특정한 문자를 대문자로 바꾸기
 #include <string>
 #include <vector>
 
 using namespace std;
 
-string solution(string myString) {
-    string answer = "";
-    for(const char myChar :  myString){
-        if(myChar == 'a' || myChar == 'A'){answer.push_back('A');}
-        else if(myChar <= 90 && myChar >= 65){answer.push_back(myChar + 32);}
-        else {answer.push_back(myChar);}
+string solution(string my_string, string alp) {
+    string answer = my_string;
+    int i = 0;
+    for(const char myChar : my_string){
+        for(const char myAlp : alp){
+            answer[i] = myChar == myAlp ? myChar - 32 : myChar;
+        }
+        i++;
     }
     return answer;
 }
