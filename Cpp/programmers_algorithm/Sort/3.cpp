@@ -4,9 +4,14 @@
 
 using namespace std;
 string retire(string& name_p, string& name_c){
-     if(name_c != name_p){return name_p;}
-    else if
-        retire(name_p, name_c+1)
+    string name;
+    if(name_c != name_p){
+        name = name_p;
+        }
+    else if(name_c == name_p && &name_c != name_c.end()){
+        name = retire(name_p, *(&name_c+1));
+    }
+    return name;
 }
 
 string solution(vector<string> participant, vector<string> completion) {
