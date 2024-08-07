@@ -1,32 +1,43 @@
-//해시1 완주하지 못한 선수
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
-string retire(string& name_p, string& name_c){
-    string name;
-    if(name_c != name_p){
-        name = name_p;
-        }
-    else if(name_c == name_p && &name_c != name_c.end()){
-        name = retire(name_p, *(&name_c+1));
-    }
-    return name;
-}
 
-string solution(vector<string> participant, vector<string> completion) {
-    string answer = retire(*participant.begin(), *completion.begin());
+bool solution(vector<string> phone_book) {
+    bool answer = true;
+    unordered_map<string, bool> numCheck;
+
+    for(const string& phone_number : phone_book){
+        numCheck[phone_number] = true;
+    }
+
+    for(const string& prefix : phone_book){
+        for(const string& phone_num : phone_book){
+            if(prefix.size() < phone_num.size()){
+                string temp = phone_num;
+                temp.replace(0, prefix.size(), prefix);
+                if(numCheck[temp] == true){
+                    return false;
+                }
+            }
+        }
+    }
+
     return answer;
 }
 
 /*
-수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
-마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 
-완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
+전화번호가 다음과 같을 경우, 구조대 전화번호는 영석이의 전화번호의 접두사입니다.
 
-제한사항
-마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
-completion의 길이는 participant의 길이보다 1 작습니다.
-참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-참가자 중에는 동명이인이 있을 수 있습니다.
+구조대 : 119
+박준영 : 97 674 223
+지영석 : 11 9552 4421
+전화번호부에 적힌 전화번호를 담은 배열 phone_book 이 solution 함수의 매개변수로 주어질 때, 어떤 번호가 다른 번호의 접두어인 경우가 있으면 false를 그렇지 않으면 true를 return 하도록 solution 함수를 작성해주세요.
+
+제한 사항
+phone_book의 길이는 1 이상 1,000,000 이하입니다.
+각 전화번호의 길이는 1 이상 20 이하입니다.
+같은 전화번호가 중복해서 들어있지 않습니다.
 */
