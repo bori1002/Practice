@@ -31,7 +31,8 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         sort(song_info.begin(), song_info.end(), [](const pair<int, int>& a, const pair<int, int>& b){return a.second > b.second;});//플레이 수 기준 내림차순 정렬
 
     //장르별 재생횟수 기준으로 내림차순 정렬을 먼저하였고 이후 다시 곡 별 플레이순으로 내림차순 정렬을 한 직후에 앞에서부터 2개 씩 앨범에 push_back하였으므로 자동으로 문제에서 요구하는 순서로 정렬이 됨
-        for(int i = 0; i < 2; i++){
+        int max_i = 2 < song_info.size() ? 2 : song_info.size();// 최대 2곡까지(노래의 수가 더 적을 경우)
+        for(int i = 0; i < max_i; i++){
             best_album.push_back(song_info[i].first);
         }
     }
