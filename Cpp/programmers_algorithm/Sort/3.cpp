@@ -28,8 +28,10 @@ string solution(vector<int> numbers) {
             answer += to_string(num.first);
         }
     }
-    else return 0;
-    
+    else if(sortedNum[0].first == 0){
+        answer = "0";
+    }
+
     return answer;
 }
 
