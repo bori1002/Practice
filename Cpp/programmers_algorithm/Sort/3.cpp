@@ -1,4 +1,4 @@
-#include <string>
+/*#include <string>
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
@@ -30,6 +30,39 @@ string solution(vector<int> numbers) {
     }
     else if(sortedNum[0].first == 0){
         answer = "0";
+    }
+
+    return answer;
+}*/내가 작성한 코드
+
+// 수정 받은 코드
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+string solution(vector<int> numbers) {
+    // 숫자를 문자열로 변환하여 정렬을 쉽게 하기 위해 사용
+    vector<string> str_numbers;
+    for (int num : numbers) {
+        str_numbers.push_back(to_string(num));
+    }
+
+    // 정렬 기준: 두 문자열을 비교하여 붙였을 때 어떤 것이 더 큰지를 판단
+    sort(str_numbers.begin(), str_numbers.end(), [](const string &a, const string &b) {
+        return a + b > b + a; // a + b가 b + a보다 크면 a가 앞에 와야 함
+    });
+
+    // 정렬된 문자열을 이어 붙임
+    string answer;
+    for (const string &num : str_numbers) {
+        answer += num;
+    }
+
+    // 모든 숫자가 0일 경우 처리
+    if (answer[0] == '0') {
+        return "0";
     }
 
     return answer;
