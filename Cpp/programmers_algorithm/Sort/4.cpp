@@ -6,21 +6,16 @@ using namespace std;
 
 int solution(vector<int> citations) {
     int answer = 0;
-    //먼저 내림차순으로 정리해서 가장 큰 수부터 탐색
-    sort(citations.begin(), citations.end(), [](const int &a, const int &b){return a > b;});
+    //먼저 내림차순 정리해서 가장 큰 수부터 탐색
+    sort(citations.begin(), citations.end(), [](const int &a, const int& b){return a > b;});
     //조건에 만족하는 순간 answer return
+    int index = 1;
     for(const int citation : citations){
-        //citation 횟수 이상이라면 answer에 저장 후 다음 인용횟수로 넘어가기
-        int count = 0;
-        for(const int h : citations){
-            if(h >= citation){
-                count++;//현재 논문의 인용횟수 h 이상일 경우 count 수를 늘린다.
-                }
-            if(count == citation){
-                answer = citation;
-                return answer;
-                }
+        if(citation >= index){
+            answer = index;
         }
+        else if(citation < index){return answer;}
+        index++;
     }
     return answer;
 }
