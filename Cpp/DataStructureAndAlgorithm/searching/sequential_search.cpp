@@ -6,8 +6,9 @@ using namespace std;
 int main(){
     vector<int> Data = {15, 10, 21, 49, 2, 52, 44, 1};
     int key = 5;//찾고자 하는 자료
-    int index = 0;
-    for(int i = 0; i < Data.size(); i++){
+    int index = 0;//자료의 인덱스
+
+    for(int i = 0; i < Data.size(); i++){//순차적으로 탐색
         if(Data[index] == key){
             index = i;
             break;
